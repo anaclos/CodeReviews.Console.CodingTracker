@@ -54,7 +54,7 @@ public class CodingController
 
         var mySession = new CodingSession { StartTime = startTime, EndTime = endTime };
         var sql = "INSERT INTO session (StartTime,EndTime) VALUES (@StartTime,@EndTime)";
-        var rowsAffected = ExecuteQuery(connectionString, sql, mySession);        
+        ExecuteQuery(connectionString, sql, mySession);        
     }
 
     public void Update(string connectionString)
@@ -111,7 +111,7 @@ public class CodingController
 
         var mySession = new CodingSession { Id = id, StartTime = startTime, EndTime = endTime };
         var sql = "UPDATE session SET StartTime = @StartTime, EndTime = @EndTime WHERE Id = @Id";
-        var rowsAffected = ExecuteQuery(connectionString, sql, mySession);            
+        ExecuteQuery(connectionString, sql, mySession);            
     }
 
     public void Delete(string connectionString)
@@ -139,7 +139,7 @@ public class CodingController
         id = Int32.Parse(response);
         var mySession = new CodingSession { Id = id };
         var sql = "DELETE FROM session WHERE Id = @Id";
-        var rowsAffected = ExecuteQuery(connectionString, sql, mySession);      
+        ExecuteQuery(connectionString, sql, mySession);      
     }
 
     public void View(string connectionString)

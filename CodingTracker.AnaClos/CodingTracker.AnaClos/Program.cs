@@ -6,7 +6,6 @@ using System.Configuration;
 string choice = "q";
 string? connectionString = ConfigurationManager.AppSettings.Get("connectionString");
 UserInput input = new UserInput();
-Validation validation = new Validation();
 CodingController controller = new CodingController();
 
 CreateBaseAndTable(connectionString);
