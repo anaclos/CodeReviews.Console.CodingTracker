@@ -1,10 +1,9 @@
 ﻿using AnaClos.CodingTracker;
 using Microsoft.Data.Sqlite;
 using Spectre.Console;
-using System.Configuration;
 
 string choice = "q";
-string? connectionString = ConfigurationManager.AppSettings.Get("connectionString");
+string? connectionString = System.Configuration.ConfigurationManager.AppSettings.Get("connectionString");
 UserInput input = new UserInput();
 CodingController controller = new CodingController();
 
