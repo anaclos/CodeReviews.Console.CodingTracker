@@ -9,62 +9,39 @@ public class Validation
         bool ok;
         var codingSession = new CodingSession { StartTime = startTime, EndTime = endTime };
         codingSession.CalculateDuration();
-        if (codingSession.Duration.TotalSeconds > 0)
-        {
-            ok = true;
-        }
-        else
-        {
-            ok = false;
-        }
-        return ok;
+        return codingSession.Duration.TotalSeconds > 0;
     }
 
     public bool ValidateDate(string date)
     {
-        bool ok = false;
+        bool ok;
         DateTime dateTime = DateTime.MinValue;
 
         if (date == "r")
         {
-            ok = true;
+            return true;
         }
-        else
-        {
-            try
-            {
-                dateTime = DateTime.ParseExact(date, "dd/MM/yy HH:mm:ss", new CultureInfo("en-US"));
-                ok = true;
-            }
-            catch (Exception ex)
-            {
-                ok = false;
-            }
-        }
+
+        ok= DateTime.TryParseExact(
+            date, 
+            "dd/MM/yy HH:mm:ss", 
+            new CultureInfo("en-US"),
+            DateTimeStyles.None,
+            out dateTime);        
         return ok;
     }
 
     public bool ValidateInt(string response)
     {
-        bool ok = false;
-        int number = 0;
+        bool ok;
+        int number;
 
         if (response == "r")
         {
-            ok = true;
+            return true;
         }
-        else
-        {
-            try
-            {
-                number = Int32.Parse(response);
-                ok = true;
-            }
-            catch (Exception ex)
-            {
-                ok = false;
-            }
-        }
+
+        ok = Int32.TryParse(response, out number);       
         return ok;
     }
 }
